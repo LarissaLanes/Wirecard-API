@@ -1,0 +1,23 @@
+POST http://localhost:3008/user/signup
+Content-Type: application/json
+
+{
+    "name": "larissa-lanes",
+    "email": "larissa@gmail.com",
+    "cpf": "111.111.111-11",
+    "type": "VENDEDOR"
+}
+
+//vendedor pode criar uma compra e comprador fazer um pagamento
+
+###
+
+POST http://localhost:3008/user/login
+Content-Type: application/json
+
+{
+    "email": "",
+    "cpf": "",
+}
+
+###
