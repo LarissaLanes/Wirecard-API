@@ -8,14 +8,14 @@ export class UserController{
     async signUp(req: Request, res: Response){
         try{
             const {name, email, cpf, type} = req.body
-            const result = await UserBusiness.signUp(
+             await UserBusiness.signUp(
                 name, 
                 email,
                 cpf,
                 type
             );
 
-            res.status(201).send(result)
+            res.status(201).send("Usuário cadastrado com sucesso")
 
         }catch(error){
             if(error instanceof Error){
@@ -30,8 +30,17 @@ export class UserController{
 
     async login(req: Request, res: Response){
         try{
+            const {email, cpf} = req.body
+            const result = await UserBusiness.login(email, cpf)
+
+            res.status(202).send(result)
 
         }catch(error){
+            if(error instanceof Error){
+                res.status(403).send(error.message)
+            }else{
+                res.send({message: "Acesso foi negado, algo deu errado"})
+            }
 
         }
     }

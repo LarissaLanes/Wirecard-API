@@ -2,10 +2,10 @@ POST http://localhost:3008/user/signup
 Content-Type: application/json
 
 {
-    "name": "larissa-lanes",
-    "email": "larissa@gmail.com",
-    "cpf": "111.111.111-11",
-    "type": "VENDEDOR"
+    "name": "kelllanes",
+    "email": "kell@gmail.com",
+    "cpf": "333.222.333-22",
+    "type": "COMPRADOR"
 }
 
 //vendedor pode criar uma compra e comprador fazer um pagamento
@@ -16,8 +16,8 @@ POST http://localhost:3008/user/login
 Content-Type: application/json
 
 {
-    "email": "",
-    "cpf": "",
+    "email": "larissa@gmail.com",
+    "cpf": "111.111.11111"
 }
 
 ###
