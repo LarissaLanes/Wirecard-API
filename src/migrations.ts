@@ -34,6 +34,19 @@ export const connection = knex({
             description VARCHAR(255) NOT NULL
         );
 
+        CREATE TABLE IF NOT EXISTS ${table_payment}(
+            id VARCHAR(255) PRIMARY KEY,
+            amount INT NOT NULL,
+            type VARCHAR(255) NOT NULL DEFAULT "BOLETO",
+            id_product VARCHAR(255) NOT NULL,
+            FOREIGN KEY(id_product) REFERENCES ${table_product}(id),
+            card_name VARCHAR(255),
+            card_number VARCHAR(255),
+            card_expiration_date DATE,
+            card_cvv INT
+        );
+
+
        
     `).then(() => console.log(
         'Tabelas criadas com sucesso!'
@@ -44,10 +57,5 @@ export const connection = knex({
         })
 
 
-           // CREATE TABLE IF NOT EXISTS ${table_payment}(
-        //     id VARCHAR(255) PRIMARY KEY,
-        //     amount INT NOT NULL,
-        //     type ENUM("BOLETO", "CREDITO") DEFAULT "BOLETO"
-        // );
-
+         
    

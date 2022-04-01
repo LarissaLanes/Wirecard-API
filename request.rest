@@ -35,7 +35,7 @@ Content-Type: application/json
 
 
 ###
-
+//VENDEDOR
 POST http://localhost:3008/product/create
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg3NzUyNDEsImV4cCI6MTY0ODc3NjQ0MX0.qcM6e2qPqKeva5tnPTBM8oVBUBZGVcpFHnCthNv_J-E
@@ -46,6 +46,22 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTIt
     "title": "Escova de dentes super maneira",
     "price": "R$100,00",
     "description": "A melhor de todas as escovas"
+}
+
+###
+//COMPRADOR
+POST http://localhost:3008/payment/method
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg3ODg3ODEsImV4cCI6MTY0ODc4OTk4MX0.q_YNxgwErNQ3p3a7E1uxfKuRx574YkdwE8EU5KAPN38
+
+{
+        "amount": 2,
+        "type": "BOLETO",
+        "idProduct": "17e25fed-dc7f-4f0b-91e2-9a7b3130cc9c",
+        "cardName": "kell",
+       " cardNumber" : "122222121212",
+        "cardExpirationDate": "2028/10/22",
+        "cardCvv": 123
 }
 
 ###
