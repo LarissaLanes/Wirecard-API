@@ -26,6 +26,14 @@ export const connection = knex({
             type VARCHAR(255) NOT NULL DEFAULT "COMPRADOR"
         );  
 
+        CREATE TABLE IF NOT EXISTS ${table_product}(
+            id VARCHAR(255) PRIMARY KEY,
+            seller VARCHAR(255) NOT NULL,
+            title VARCHAR(255) NOT NULL,
+            price VARCHAR(255) NOT NULL,
+            description VARCHAR(255) NOT NULL
+        );
+
        
     `).then(() => console.log(
         'Tabelas criadas com sucesso!'
@@ -42,9 +50,4 @@ export const connection = knex({
         //     type ENUM("BOLETO", "CREDITO") DEFAULT "BOLETO"
         // );
 
-        // CREATE TABLE IF NOT EXISTS ${table_product}(
-        //     id VARCHAR(255) PRIMARY KEY,
-        //     seller VARCHAR(255) NOT NULL,
-        //     price VARCHAR(255) NOT NULL,
-        //     description VARCHAR(255)
-        // );
+   

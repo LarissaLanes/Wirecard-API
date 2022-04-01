@@ -40,6 +40,15 @@ class UserBusiness{
            if(cpf.length > 14){
                throw new CustomError(422, "cpf incorreto")
            }
+
+           const cpfConsulting : User | undefined = await this.userDataBase.getUserByCpf(cpf);
+
+           if(cpfConsulting){
+               const cpf = cpfConsulting.getCpf()
+               if(cpf === cpf){
+                   throw new Error("CPF JÁ CADASTRADO")
+               }
+           }
            
            await this.userDataBase.createUser(
                new User(id, name, email, cpf, stringToUserRole(type))

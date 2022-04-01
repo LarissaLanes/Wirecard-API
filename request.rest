@@ -4,20 +4,48 @@ Content-Type: application/json
 {
     "name": "kelllanes",
     "email": "kell@gmail.com",
-    "cpf": "333.222.333-22",
+    "cpf": "444.444.444-44",
     "type": "COMPRADOR"
 }
 
-//vendedor pode criar uma compra e comprador fazer um pagamento
+//só o vendedor pode criar uma compra e  só o comprador pode fazer um pagamento
 
 ###
+//comprador
+POST http://localhost:3008/user/login
+Content-Type: application/json
+
+{
+    "email": "kell@gmail.com",
+    "cpf": "444.444.444-44"
+}
+
+###
+
+//vendedor
 
 POST http://localhost:3008/user/login
 Content-Type: application/json
 
 {
     "email": "larissa@gmail.com",
-    "cpf": "111.111.11111"
+    "cpf": "111.111.111-11"
+}
+
+
+
+###
+
+POST http://localhost:3008/product/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg3NzUyNDEsImV4cCI6MTY0ODc3NjQ0MX0.qcM6e2qPqKeva5tnPTBM8oVBUBZGVcpFHnCthNv_J-E
+
+
+{
+    "seller": "Larissa",
+    "title": "Escova de dentes super maneira",
+    "price": "R$100,00",
+    "description": "A melhor de todas as escovas"
 }
 
 ###
