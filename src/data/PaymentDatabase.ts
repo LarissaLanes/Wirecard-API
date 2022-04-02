@@ -7,16 +7,14 @@ export class PaymentDatabase extends BaseDataBase{
 
         try{
             await BaseDataBase.connection.raw(`
-                INSERT INTO ${table_payment} (id, amount, type, id_product, card_name, card_number, card_expiration_date, card_cvv)
+                INSERT INTO ${table_payment} (id, amount, type, id_product, payment_created_at)
                 VALUES (
                     '${payment.getId()}',
                     '${payment.getAmount()}',
                     '${payment.getType()}',
                     '${payment.getIdProduct()}',
-                    '${payment.getCardName()}',
-                    '${payment.getCardNumber()}',
-                    '${payment.getCardExpirationData()}',
-                    '${payment.getCardCvv()}'
+                    '${payment.getPaymentCreatedAt().toISOString().substring(0, 10)}'
+
                 )
             `)
 

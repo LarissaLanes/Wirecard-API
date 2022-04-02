@@ -6,24 +6,18 @@ export class PaymentController{
 
     async methodPayment(req: Request, res: Response): Promise<void>{
         try{
-            const {amount, type, idProduct, cardName, cardNumber, cardExpirationDate, cardCvv} = req.body
+            const {amount, type, idProduct} = req.body
 
             const token = req.headers.authorization as string
-
-            let message = 'sucesso ao fazer um pagamento'
 
             const result = await PaymentBusiness.methodPayment(
                 amount,
                 type,
                 idProduct,
-                cardName,
-                cardNumber,
-                cardExpirationDate,
-                cardCvv,
                 token
             )
 
-            res.status(200).send({message, result})
+            res.status(200).send({result})
 
      
         }catch(error){

@@ -11,7 +11,9 @@ Content-Type: application/json
 //só o vendedor pode criar uma compra e  só o comprador pode fazer um pagamento
 
 ###
-//comprador
+
+
+# @name comprador
 POST http://localhost:3008/user/login
 Content-Type: application/json
 
@@ -52,16 +54,21 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTIt
 //COMPRADOR
 POST http://localhost:3008/payment/method
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg3ODg3ODEsImV4cCI6MTY0ODc4OTk4MX0.q_YNxgwErNQ3p3a7E1uxfKuRx574YkdwE8EU5KAPN38
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyY2YzMWIwLWRlNDItNDdhOS04ZWU1LWZhOWJiMDBlZjRmYyIsInR5cGUiOiJWRU5ERURPUiIsImlhdCI6MTY0ODk0MDE4NywiZXhwIjoxNjQ5MjQwMTg3fQ._eOgzkE6HClfxRBDXgUuKJU_QIQ483fhEhogl-FIp5o
 
 {
-        "amount": 2,
+        "amount": 1,
         "type": "BOLETO",
-        "idProduct": "17e25fed-dc7f-4f0b-91e2-9a7b3130cc9c",
-        "cardName": "kell",
-       " cardNumber" : "122222121212",
-        "cardExpirationDate": "2028/10/22",
-        "cardCvv": 123
+        "idProduct": "47282402-ccda-487f-b1a8-37146b7be687"
 }
 
 ###
+
+
+
+{
+     "cardName": "",
+       " cardNumber" : "",
+        "cardExpirationDate": "",
+        "cardCvv": 
+}

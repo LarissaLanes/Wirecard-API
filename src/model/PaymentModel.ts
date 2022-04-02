@@ -7,10 +7,11 @@ export class Payment{
         private amount: number,
         private type: METHOD_PAYMENT_ROLES,
         private idProduct: string,
-        private cardName: string,
-        private cardNumber: string,
-        private cardExpirationDate: Date,
-        private cardCvv: number
+        private paymentCreatedAt: any
+        // private cardName: string,
+        // private cardNumber: string,
+        // private cardExpirationDate: Date,
+        // private cardCvv: number
     ){}
 
     public getId(): string {
@@ -29,21 +30,29 @@ export class Payment{
         return this.idProduct
     }
 
-    public getCardName(): string {
-        return this.cardName
+    public getPaymentCreatedAt(): any {
+        return this.paymentCreatedAt
     }
 
-    public getCardNumber(): string {
-        return this.cardNumber
-    }
+    // public getStatus(): STATUS_PAYMENT {
+    //     return this.status
+    // }
 
-    public getCardExpirationData(): Date {
-        return this.cardExpirationDate
-    }
+    // public getCardName(): string {
+    //     return this.cardName
+    // }
 
-    public getCardCvv(): number {
-        return this.cardCvv
-    }
+    // public getCardNumber(): string {
+    //     return this.cardNumber
+    // }
+
+    // public getCardExpirationData(): Date {
+    //     return this.cardExpirationDate
+    // }
+
+    // public getCardCvv(): number {
+    //     return this.cardCvv
+    // }
 
 }
 
@@ -75,3 +84,19 @@ export const stringToMethodRole = (input: string): METHOD_PAYMENT_ROLES => {
           throw new CustomError(422, "Metodo de pagamento inválido");
     }
  };
+
+//  export enum STATUS_PAYMENT{
+//     PENDENTE = "PENDENTE",
+//     REALIZADO = "REALIZADO"
+// }
+
+// export const stringToMethodStatus = (input: string): STATUS_PAYMENT => {
+//     switch (input) {
+//        case "PENDENTE":
+//           return STATUS_PAYMENT.PENDENTE;
+//        case "REALIZADO":
+//           return STATUS_PAYMENT.REALIZADO;
+//        default:
+//           throw new CustomError(422, "Tipo de status não encontrado");
+//     }
+//  };

@@ -1,4 +1,4 @@
-import { table_user, table_product, table_payment } from './data/BaseDatabase';
+import { table_user, table_product, table_payment, table_card } from './data/BaseDatabase';
 import dotenv from 'dotenv';
 import knex from "knex";
 
@@ -40,14 +40,21 @@ export const connection = knex({
             type VARCHAR(255) NOT NULL DEFAULT "BOLETO",
             id_product VARCHAR(255) NOT NULL,
             FOREIGN KEY(id_product) REFERENCES ${table_product}(id),
-            card_name VARCHAR(255),
-            card_number VARCHAR(255),
-            card_expiration_date DATE,
-            card_cvv INT
+            payment_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
 
+        CREATE TABLE IF NOT EXISTS ${table_card}(
+            id VARCHAR(255) PRIMARY KEY,
+            id_product VARCHAR(255) NOT NULL,
+            FOREIGN KEY(id_product) REFERENCES ${table_payment}(id_product),
+            card_name VARCHAR(255),
+            card_number VARCHAR(19),
+            card_expiration_date DATE,
+            card_cvv VARCHAR(3)
+        );
 
-       
+        ALTER TABLE  ${table_payment} DROP COLUMN status;
+
     `).then(() => console.log(
         'Tabelas criadas com sucesso!'
     )).catch(error => 

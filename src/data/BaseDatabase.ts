@@ -26,3 +26,4 @@ export default class BaseDataBase {
 export const table_user = "card_user"
 export const table_payment = "card_payment"
 export const table_product = "card_product"
+export const table_card = "card_boleto"
