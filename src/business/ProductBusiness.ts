@@ -53,21 +53,42 @@ class ProductBusiness{
         
     }
 
-    async getAllProduct(req: Request, res: Response){
+    async getProductById(id: string, token: string){
         try{
+            if(!id){
+                throw new Error("insira um id no req paramns")
+            }
+
+            if(!token){
+                throw new Error("Token necessário")
+            }
+
+            const tokenValidation: any = this.tokenGenerator.verify(token)
+
+            const product = (async () => {
+                const data = await this.productDatabase.getProductById(id)
+                return data
+            })
+
+
+            const dataProduct = await product()
+            
+            if(!dataProduct){
+                throw new CustomError(422, "Produto não encontrado ")
+            }
+
+            return dataProduct
 
         }catch(error){
+            if(error instanceof Error){
+                throw new CustomError(400, error.message)
+            }else {
+                throw new CustomError(400, "error ao acha produto por id")
+            }
 
         }
     }
 
-    async getProductFromId(req: Request, res: Response){
-        try{
-
-        }catch(error){
-
-        }
-    }
 
 
 

@@ -78,5 +78,22 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTIt
        
 }
 
+###
+
+//RQUIÇÕES GET
+
+//pegar produto pelo id
+GET http://localhost:3008/product/by/47282402-ccda-487f-b1a8-37146b7be687
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyY2YzMWIwLWRlNDItNDdhOS04ZWU1LWZhOWJiMDBlZjRmYyIsInR5cGUiOiJWRU5ERURPUiIsImlhdCI6MTY0ODk1NDM2NywiZXhwIjoxNjQ5MjU0MzY3fQ.BRjk4n5uoZ9f6Fr_lRmb7oytX5S8AJmpMqieMHMsWLc
+
+###
+
+GET http://localhost:3008/product/getAll
+
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyY2YzMWIwLWRlNDItNDdhOS04ZWU1LWZhOWJiMDBlZjRmYyIsInR5cGUiOiJWRU5ERURPUiIsImlhdCI6MTY0ODk1NDM2NywiZXhwIjoxNjQ5MjU0MzY3fQ.BRjk4n5uoZ9f6Fr_lRmb7oytX5S8AJmpMqieMHMsWLc
+
+
 
 

@@ -37,21 +37,23 @@ export class ProductController{
         }
     }
 
-    async getAllProduct(req: Request, res: Response){
+    async getProductById(req: Request, res: Response){
         try{
+            const id = req.params.id
+            const token = req.headers.authorization as string
+
+            const result = await ProductBusiness.getProductById(id, token)
+            res.status(200).send(result)
 
         }catch(error){
-
+            if (error instanceof Error) {
+                res.status(400).send(error.message);
+            } else {
+                res.send({ message: "Algo deu errado" })
+            }
         }
     }
 
-    async getProductFromId(req: Request, res: Response){
-        try{
-
-        }catch(error){
-
-        }
-    }
 
 }
 

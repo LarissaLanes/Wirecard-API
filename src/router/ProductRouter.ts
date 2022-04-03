@@ -7,3 +7,4 @@ export const productRouter = express.Router();
 const productController = new ProductController()
 
 productRouter.post("/create", productController.createProduct)
+productRouter.get("/by/:id", productController.getProductById)
