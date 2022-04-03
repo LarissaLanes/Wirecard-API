@@ -52,9 +52,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTIt
 
 ###
 //COMPRADOR
-POST http://localhost:3008/payment/method
+POST http://localhost:3008/payment/boleto
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyY2YzMWIwLWRlNDItNDdhOS04ZWU1LWZhOWJiMDBlZjRmYyIsInR5cGUiOiJWRU5ERURPUiIsImlhdCI6MTY0ODk0MDE4NywiZXhwIjoxNjQ5MjQwMTg3fQ._eOgzkE6HClfxRBDXgUuKJU_QIQ483fhEhogl-FIp5o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg5NDY4NDAsImV4cCI6MTY0OTI0Njg0MH0._4n6-hxLnGOe_OrbuwOzO6HwvChD5zondlnluiZiFdU
 
 {
         "amount": 1,
@@ -65,10 +65,18 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyY2YzMWIwLWRlNDIt
 ###
 
 
+POST http://localhost:3008/payment/credit
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg5NDY4NDAsImV4cCI6MTY0OTI0Njg0MH0._4n6-hxLnGOe_OrbuwOzO6HwvChD5zondlnluiZiFdU
 
-{
-     "cardName": "",
-       " cardNumber" : "",
-        "cardExpirationDate": "",
-        "cardCvv": 
+{       
+        "idPayment": "08f5370b-960d-4378-afe8-a5c516ebc45d",
+        "cardName": "Larissa Lanes",
+        "cardNumber" : "1111-1111-1111-1111",
+        "cardExpirationDate": "2028/10/10",
+        "cardCvv": "123"
+       
 }
+
+
+

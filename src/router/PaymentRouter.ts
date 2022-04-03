@@ -6,4 +6,5 @@ export const paymentRouter = express.Router();
 
 const paymentController = new PaymentController()
 
-paymentRouter.post("/method", paymentController.methodPayment)
+paymentRouter.post("/boleto", paymentController.methodPayment)
+paymentRouter.post("/credit", paymentController.methodPaymentCredit)

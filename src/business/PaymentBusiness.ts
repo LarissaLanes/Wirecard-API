@@ -1,3 +1,4 @@
+import { InputId, PaymentCredit } from './../model/CreditModel';
 import { stringToMethodRole} from './../model/PaymentModel';
 import { CustomError } from './../error/CustomError';
 import { PaymentDatabase } from './../data/PaymentDatabase';
@@ -69,6 +70,88 @@ class PaymentBusiness{
             }
 
             return "Pagamento no boleto feito com sucesso"
+
+        }catch(error){
+            if (error instanceof Error) {
+                throw new CustomError(400, error.message)
+        } else {
+            throw new CustomError(400, "Erro ao fazer um pagamento")
+        }
+
+        }
+    }
+
+    async methodPaymentCredit(
+        idPayment: string,
+        cardName: string,
+        cardNumber: string,
+        cardExpirationDate: Date,
+        cardCvv: string,
+        token: string
+    ){
+        try{
+
+            if(!idPayment){
+                throw new CustomError(422, "id do produto incorreto")
+            }
+
+            if(!cardName ){
+                throw new CustomError(422, "nome incorreto")
+            }
+
+            if(!cardNumber ){
+                throw new CustomError(422, "numero do cartão incorreto")
+            }
+
+            if(!cardExpirationDate ){
+                throw new CustomError(422, "Validade incorreta")
+            }
+
+            if(!cardCvv ){
+                throw new CustomError(422, "CVV incorreto")
+            }
+
+
+            if(cardCvv.length != 3){
+                return "Cvv deve conter 3 digitos"
+            }
+
+            if(cardNumber.length != 19){
+                return "digite o numero do cartão corretamente"
+            }
+            
+            
+            
+
+
+
+            if(!token){
+                throw new Error("por favor insira um token")
+            };
+
+            const tokenValidation : any = this.tokenGenerator.verify(token)
+
+            const Id = this.idGenerator.generate()
+
+            if(tokenValidation.type != "COMPRADOR"){
+                throw new Error("Somente clientes podem realizar uma compra")
+            }
+
+    
+            await this.PaymentDatabase.makePaymentCredit(
+                new PaymentCredit(
+                    Id, 
+                    idPayment,
+                    cardName,
+                    cardNumber,
+                    cardExpirationDate,
+                    cardCvv,
+                    
+                )
+            )
+
+            return "Pagamento com crédito feito com sucesso"
+
 
         }catch(error){
             if (error instanceof Error) {

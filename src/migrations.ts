@@ -45,15 +45,16 @@ export const connection = knex({
 
         CREATE TABLE IF NOT EXISTS ${table_card}(
             id VARCHAR(255) PRIMARY KEY,
-            id_product VARCHAR(255) NOT NULL,
-            FOREIGN KEY(id_product) REFERENCES ${table_payment}(id_product),
+            id_payment VARCHAR(255) NOT NULL,
+            FOREIGN KEY(id_payment) REFERENCES ${table_payment}(id),
             card_name VARCHAR(255),
-            card_number VARCHAR(19),
+            card_number VARCHAR(255),
             card_expiration_date DATE,
-            card_cvv VARCHAR(3)
+            card_cvv VARCHAR(255)
         );
 
-        ALTER TABLE  ${table_payment} DROP COLUMN status;
+           
+
 
     `).then(() => console.log(
         'Tabelas criadas com sucesso!'

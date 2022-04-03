@@ -8,10 +8,6 @@ export class Payment{
         private type: METHOD_PAYMENT_ROLES,
         private idProduct: string,
         private paymentCreatedAt: any
-        // private cardName: string,
-        // private cardNumber: string,
-        // private cardExpirationDate: Date,
-        // private cardCvv: number
     ){}
 
     public getId(): string {
@@ -33,40 +29,12 @@ export class Payment{
     public getPaymentCreatedAt(): any {
         return this.paymentCreatedAt
     }
-
-    // public getStatus(): STATUS_PAYMENT {
-    //     return this.status
-    // }
-
-    // public getCardName(): string {
-    //     return this.cardName
-    // }
-
-    // public getCardNumber(): string {
-    //     return this.cardNumber
-    // }
-
-    // public getCardExpirationData(): Date {
-    //     return this.cardExpirationDate
-    // }
-
-    // public getCardCvv(): number {
-    //     return this.cardCvv
-    // }
-
 }
 
 export type PaymentInput = {
     amount: number,
     type: METHOD_PAYMENT_ROLES,
     idProduct: string,
-}
-
-export type CardInput = {
-    cardName: string,
-    cardNumber: string,
-    cardExpirationDate: Date,
-    cardCvv: number
 }
 
 export enum METHOD_PAYMENT_ROLES{
@@ -85,18 +53,3 @@ export const stringToMethodRole = (input: string): METHOD_PAYMENT_ROLES => {
     }
  };
 
-//  export enum STATUS_PAYMENT{
-//     PENDENTE = "PENDENTE",
-//     REALIZADO = "REALIZADO"
-// }
-
-// export const stringToMethodStatus = (input: string): STATUS_PAYMENT => {
-//     switch (input) {
-//        case "PENDENTE":
-//           return STATUS_PAYMENT.PENDENTE;
-//        case "REALIZADO":
-//           return STATUS_PAYMENT.REALIZADO;
-//        default:
-//           throw new CustomError(422, "Tipo de status não encontrado");
-//     }
-//  };
