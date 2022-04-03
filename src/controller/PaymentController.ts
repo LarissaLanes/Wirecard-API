@@ -1,5 +1,3 @@
-import { InputId } from './../model/CreditModel';
-import { PaymentInput } from './../model/PaymentModel';
 import { Request, Response } from "express";
 import PaymentBusiness from '../business/PaymentBusiness';
 

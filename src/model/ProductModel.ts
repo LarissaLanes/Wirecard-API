@@ -31,3 +31,10 @@ export class Product {
 
     
 }
+
+export type ProductInput = {
+    seller: string,
+    title : string,
+    price : string,
+    description: string
+}

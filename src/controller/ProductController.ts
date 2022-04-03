@@ -1,6 +1,5 @@
 import { ProductInput } from './../model/ProductModel';
 import {Request, Response} from "express"
-import UserBusiness from '../business/UserBusiness';
 import ProductBusiness from './../business/ProductBusiness';
 
 
