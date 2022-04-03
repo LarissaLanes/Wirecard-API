@@ -1,4 +1,4 @@
-import { table_user, table_product, table_payment } from './data/BaseDatabase';
+import { table_user, table_product, table_payment, table_card } from './data/BaseDatabase';
 import dotenv from 'dotenv';
 import knex from "knex";
 
@@ -26,7 +26,36 @@ export const connection = knex({
             type VARCHAR(255) NOT NULL DEFAULT "COMPRADOR"
         );  
 
-       
+        CREATE TABLE IF NOT EXISTS ${table_product}(
+            id VARCHAR(255) PRIMARY KEY,
+            seller VARCHAR(255) NOT NULL,
+            title VARCHAR(255) NOT NULL,
+            price VARCHAR(255) NOT NULL,
+            description VARCHAR(255) NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS ${table_payment}(
+            id VARCHAR(255) PRIMARY KEY,
+            amount INT NOT NULL,
+            type VARCHAR(255) NOT NULL DEFAULT "BOLETO",
+            id_product VARCHAR(255) NOT NULL,
+            FOREIGN KEY(id_product) REFERENCES ${table_product}(id),
+            payment_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+
+        CREATE TABLE IF NOT EXISTS ${table_card}(
+            id VARCHAR(255) PRIMARY KEY,
+            id_payment VARCHAR(255) NOT NULL,
+            FOREIGN KEY(id_payment) REFERENCES ${table_payment}(id),
+            card_name VARCHAR(255),
+            card_number VARCHAR(255),
+            card_expiration_date DATE,
+            card_cvv VARCHAR(255)
+        );
+
+           
+
+
     `).then(() => console.log(
         'Tabelas criadas com sucesso!'
     )).catch(error => 
@@ -36,15 +65,5 @@ export const connection = knex({
         })
 
 
-           // CREATE TABLE IF NOT EXISTS ${table_payment}(
-        //     id VARCHAR(255) PRIMARY KEY,
-        //     amount INT NOT NULL,
-        //     type ENUM("BOLETO", "CREDITO") DEFAULT "BOLETO"
-        // );
-
-        // CREATE TABLE IF NOT EXISTS ${table_product}(
-        //     id VARCHAR(255) PRIMARY KEY,
-        //     seller VARCHAR(255) NOT NULL,
-        //     price VARCHAR(255) NOT NULL,
-        //     description VARCHAR(255)
-        // );
+         
+   

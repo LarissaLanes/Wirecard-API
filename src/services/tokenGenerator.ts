@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export class TokenGenerator {
-  private static expiresIn: number = 1200;
+  private static expiresIn: number = 300000;
 
   public generate = (input: AuthenticationData): string => {
     const newToken = jwt.sign(
@@ -22,7 +22,7 @@ export class TokenGenerator {
 
   public verify(token: string) {
     const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
-    const result = { id: payload.id, role: payload.role };
+    const result = { id: payload.id, type: payload.type };
     return result;
   }
 }
