@@ -1,58 +1,73 @@
 POST http://localhost:3008/user/signup
 Content-Type: application/json
 
+//Cadastrar um usuário comprador
+
 {
-    "name": "kelllanes",
-    "email": "kell@gmail.com",
+    "name": "Usuário1",
+    "email": "Usuário1@gmail.com",
     "cpf": "444.444.444-44",
     "type": "COMPRADOR"
 }
 
-//só o vendedor pode criar uma compra e  só o comprador pode fazer um pagamento
+###
+
+POST http://localhost:3008/user/signup
+Content-Type: application/json
+
+//Cadastrar um usuário Vendedor
+
+{
+    "name": "Usuário2",
+    "email": "Usuário2@gmail.com",
+    "cpf": "333.333.333-33",
+    "type": "VENDEDOR"
+}
 
 ###
 
-
-# @name comprador
+//Logar um usuário comprador
 POST http://localhost:3008/user/login
 Content-Type: application/json
 
 {
-    "email": "kell@gmail.com",
+    "email": "Usuário1@gmail.com",
     "cpf": "444.444.444-44"
 }
 
 ###
-
-//vendedor
-
+//logar um usuário vendedor
 POST http://localhost:3008/user/login
 Content-Type: application/json
 
 {
-    "email": "larissa@gmail.com",
-    "cpf": "111.111.111-11"
+    "email": "Usuário2@gmail.com",
+    "cpf": "333.333.333-33"
 }
 
-
-
 ###
-//VENDEDOR
+
+//Crie um produto
+//ATENÇAO somente usuários vendedores podem criar um produto
 POST http://localhost:3008/product/create
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg3NzUyNDEsImV4cCI6MTY0ODc3NjQ0MX0.qcM6e2qPqKeva5tnPTBM8oVBUBZGVcpFHnCthNv_J-E
 
 
 {
-    "seller": "Larissa",
+    "seller": "Usuário2",
     "title": "Escova de dentes super maneira",
     "price": "R$100,00",
     "description": "A melhor de todas as escovas"
 }
 
 ###
-//COMPRADOR
+
+//Faça um pagamento por boleto
+//ATENÇÃO somente usuários compradores podem efetuar uma compra
+
 POST http://localhost:3008/payment/boleto
+
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg5NDY4NDAsImV4cCI6MTY0OTI0Njg0MH0._4n6-hxLnGOe_OrbuwOzO6HwvChD5zondlnluiZiFdU
 
@@ -64,14 +79,14 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTIt
 
 ###
 
-
+// Fazer uma compra com cartão de crédito
 POST http://localhost:3008/payment/credit
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTItNDVjMi05ZWY3LWRmZjc3NjliOGRiNSIsInR5cGUiOiJDT01QUkFET1IiLCJpYXQiOjE2NDg5NDY4NDAsImV4cCI6MTY0OTI0Njg0MH0._4n6-hxLnGOe_OrbuwOzO6HwvChD5zondlnluiZiFdU
 
 {       
         "idPayment": "08f5370b-960d-4378-afe8-a5c516ebc45d",
-        "cardName": "Larissa Lanes",
+        "cardName": "Usuário1",
         "cardNumber" : "1111-1111-1111-1111",
         "cardExpirationDate": "2028/10/10",
         "cardCvv": "123"
@@ -80,20 +95,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNmExMTZkLTliNTIt
 
 ###
 
-//RQUIÇÕES GET
-
 //pegar produto pelo id
 GET http://localhost:3008/product/by/47282402-ccda-487f-b1a8-37146b7be687
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyY2YzMWIwLWRlNDItNDdhOS04ZWU1LWZhOWJiMDBlZjRmYyIsInR5cGUiOiJWRU5ERURPUiIsImlhdCI6MTY0ODk1NDM2NywiZXhwIjoxNjQ5MjU0MzY3fQ.BRjk4n5uoZ9f6Fr_lRmb7oytX5S8AJmpMqieMHMsWLc
-
-###
-
-GET http://localhost:3008/product/getAll
-
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyY2YzMWIwLWRlNDItNDdhOS04ZWU1LWZhOWJiMDBlZjRmYyIsInR5cGUiOiJWRU5ERURPUiIsImlhdCI6MTY0ODk1NDM2NywiZXhwIjoxNjQ5MjU0MzY3fQ.BRjk4n5uoZ9f6Fr_lRmb7oytX5S8AJmpMqieMHMsWLc
-
 
 
 
