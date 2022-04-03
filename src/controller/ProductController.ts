@@ -24,7 +24,7 @@ export class ProductController{
                 input, token
             )
 
-            res.status(200).send(result)
+            res.status(201).send(result)
 
 
         }catch(error){

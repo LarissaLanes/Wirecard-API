@@ -1,4 +1,3 @@
-import { InputId } from './../model/CreditModel';
 import { PaymentCredit } from "../model/CreditModel";
 import { Payment } from "../model/PaymentModel";
 import BaseDataBase, { table_card, table_payment } from "./BaseDatabase";

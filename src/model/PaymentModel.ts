@@ -31,12 +31,6 @@ export class Payment{
     }
 }
 
-export type PaymentInput = {
-    amount: number,
-    type: METHOD_PAYMENT_ROLES,
-    idProduct: string,
-}
-
 export enum METHOD_PAYMENT_ROLES{
     BOLETO = "BOLETO",
     CREDITO = "CREDITO"

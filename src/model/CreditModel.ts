@@ -1,15 +1,3 @@
-export type CardInput = {
-    cardName: string,
-    cardNumber: string,
-    cardExpirationDate: Date,
-    cardCvv: string
-}
-
-export interface InputId{
-    idProduct: string
-}
-
-
 export class PaymentCredit{
 
     constructor(

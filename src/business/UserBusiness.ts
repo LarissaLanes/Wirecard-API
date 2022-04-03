@@ -1,19 +1,16 @@
-import { stringToUserRole, USER_ROLES } from './../model/UserModel';
+import { stringToUserRole} from './../model/UserModel';
 import { CustomError } from './../error/CustomError';
 import { UserDataBase } from './../data/UserDatabase';
 import { TokenGenerator } from './../services/tokenGenerator';
-import hashGenerator, { HashGenerator } from './../services/hashGenerator';
-import idGenerator, { IdGenerator } from './../services/idGenerator';
-import { Request, Response } from 'express';
+import  { IdGenerator } from './../services/idGenerator';
 import { User } from '../model/UserModel';
-import { type } from 'os';
+
 
 
 class UserBusiness {
 
     constructor(
         private idGenerator: IdGenerator,
-        private hashGenerator: HashGenerator,
         private tokenGenerator: TokenGenerator,
         private userDataBase: UserDataBase
     ) {
@@ -33,7 +30,6 @@ class UserBusiness {
 
             const id = this.idGenerator.generate()
 
-            //    const CPF = await this.hashGenerator.hash(cpf)
             if (email.indexOf("@") === -1) {
                 throw new CustomError(422, "Email invalido ou já cadastrado tente novamente")
             }
@@ -47,7 +43,7 @@ class UserBusiness {
             if (cpfConsulting) {
                 const cpf = cpfConsulting.getCpf()
                 if (cpf === cpf) {
-                    throw new Error("CPF JÁ CADASTRADO")
+                    throw new CustomError(403, "CPF JÁ CADASTRADO")
                 }
             }
 
@@ -77,7 +73,7 @@ class UserBusiness {
 
         try {
             if (!email || !cpf) {
-                throw new CustomError(403, "Seu acesso foi negado ,pode haver algum dado incorreto")
+                throw new CustomError(403, "Seu acesso foi negado,pode haver algum dado incorreto")
             }
             const user: any = await this.userDataBase.getUserByEmail(email)
 
@@ -112,7 +108,6 @@ class UserBusiness {
 
 export default new UserBusiness(
     new IdGenerator(),
-    new HashGenerator(),
     new TokenGenerator(),
     new UserDataBase()
 )

@@ -1,4 +1,3 @@
-import { USER_ROLES } from './../model/UserModel';
 import { User } from "../model/UserModel";
 import BaseDataBase, { table_user } from "./BaseDatabase";
 
