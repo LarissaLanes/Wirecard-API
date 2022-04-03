@@ -5,8 +5,12 @@
 
 [Documentação](https://documenter.getpostman.com/view/18390054/UVysxbQ1)
 
+Clone o repositorio em sua maquina usando o comando git clone
+em seguida use npm i para puxar os arquivos.
+adicione os dados do seu banco de dados em um arquivo env
+use o arquivo request.rest para popular o seu banco de dados e fazer as requições
 
-## ENDPOINTS:
+### ENDPOINTS:
 
 * signup
 * login
@@ -15,17 +19,15 @@
 * paymentCredit
 * getProductById
 
-## TESTES: 
+### TESTES: 
 
-### USER
+USER
 * Nome vazio
 * Email inválido
 * CPF incorreto
 
-### PRODUCT
-
+PRODUCT
 * Falta dados
 
-### PAYMENT
-
+PAYMENT
 * Error por falta do id do produto
